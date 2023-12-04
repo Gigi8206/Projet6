@@ -1,0 +1,124 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; 
+    color: #e50914; 
+}
+
+header {
+    background-color: #111; 
+    color: #e50914;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 1em;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5em 1em;
+}
+
+nav a:hover {
+    border-bottom: 2px solid #e50914; 
+}
+
+
+nav a[href="#"] {
+    color: white; 
+}
+
+
+.main-section {
+    padding: 2em;
+}
+
+.best-movie {
+    background-color: #202020; 
+    padding: 2em;
+    border-radius: 10px;
+    text-align: center; 
+}
+
+.best-movie img {
+    width: 100%;
+    max-width: 500px; 
+    height: auto;
+    border-radius: 5px;
+}
+
+.best-movie h2 {
+    color: #e50914; 
+   
+}
+
+.best-movie p {
+    margin-bottom: 1em;
+    color: white;
+}
+
+.best-movie button {
+    background-color: #e50914; 
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.best-movie button:hover {
+    background-color: #ff3c1f; 
+}
+
+.top-rated-movies,
+.category {
+    margin-top: 2em;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto; /* Permet le défilement horizontal */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none; /* Masquer la barre de défilement */
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    margin-right: 1em;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 400px; 
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+h1,h2,h3,h4 {
+    color: #e50914; 
+}
+
+footer {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
