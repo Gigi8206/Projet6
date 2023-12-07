@@ -18,6 +18,8 @@ header {
 .logo {
     font-size: 1.5em;
     font-weight: bold;
+    color: #e50914;
+    text-decoration: none;
 }
 
 nav ul {
@@ -48,15 +50,15 @@ nav a[href="#"] {
 }
 
 .best-movie {
-    background-color: #202020; 
+    background-color: #202020;
     padding: 2em;
     border-radius: 10px;
-    text-align: center; 
+    text-align: center;
 }
 
 .best-movie img {
     width: 100%;
-    max-width: 500px; 
+    max-width: 500px;
     height: auto;
     border-radius: 5px;
 }
@@ -69,6 +71,8 @@ nav a[href="#"] {
 .best-movie p {
     margin-bottom: 1em;
     color: white;
+    text-align:left;
+    margin-left: 40em;
 }
 
 .best-movie button {
