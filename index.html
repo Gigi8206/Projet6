@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JustStreamIt</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- jQuery is included only if needed -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <script src="loadCategories.js"></script>
     <script src="loadCategoriesAction.js"></script>
     <script src="loadCategorieAdventure.js"></script>
     <script src="loadCategorieFantasy.js"></script>
-    
 </head>
 <body>
 
@@ -28,100 +28,37 @@
         <div class="best-movie">
             <img src="images/Meilleur film/Salt poster.jpg" alt="Meilleur film">
             <h2>SALT</h2>
-            <p>Evelyn Salt est sans aucun doute l’un des meilleurs agents que la CIA ait jamais comptés dans ses rangs.</p>
-            <p>Pourtant, lorsque la jeune femme est accusée d’être une espionne au service de la Russie, elle doit fuir.</p>
-            <p>Evelyn Salt va faire appel à sa remarquable expertise pour échapper à ceux qui la traquent, y compris dans son propre </p>
-            <p>En cherchant à percer le secret de ceux qui la visent, Salt va brouiller toutes les pistes.</p>
-            <p>Est-elle vraiment ce qu’elle prétend ? Désormais, une seule question se pose : qui est Salt ?</p>
-            <button>Voir plus</button>
+            <p class="movie-description">
+                Evelyn Salt est sans aucun doute l’un des meilleurs agents que la CIA ait jamais comptés dans ses rangs.
+                Pourtant, lorsque la jeune femme est accusée d’être une espionne au service de la Russie, elle doit fuir.
+                Evelyn Salt va faire appel à sa remarquable expertise pour échapper à ceux qui la traquent, y compris dans son propre 
+                En cherchant à percer le secret de ceux qui la visent, Salt va brouiller toutes les pistes.
+                Est-elle vraiment ce qu’elle prétend ? Désormais, une seule question se pose : qui est Salt ?
+            </p>
+            <div class="button-container">
+                <button>Voir plus</button>
+            </div>
         </div>
 
         <div class="top-rated-movies" id="accueil">
             <h2>Films les mieux notés</h2>
             <div class="carousel" id="topRatedCarousel">
+                <!-- Les images des films les mieux notés seront chargées par JavaScript -->
             </div>
         </div>
         <div class="category" id="categories">
             <h2>Action</h2>
-
             <div class="carousel" id="actionCarousel">
-                
-                <div class="carousel-item">
-                    <img src="images/Action/1163750-1000xauto-hollywood-action.jpg" alt="Category 1 Movie 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Action/aff_1587020190610160005.jpg" alt="Category 1 Movie 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Action/aff_3173020191031000001.jpg" alt="Category 1 Movie 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Action/Firstblood4.jpg" alt="Category 1 Movie 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Action/matrix_the_1999_3131_poster.jpg" alt="Category 1 Movie 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Action/sicario-4d105b5464c74c2d8a92a6dae72ef731.jpg" alt="Category 1 Movie 6">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Action/Taken 3 Poster.jpg" alt="Category 1 Movie 7">
-                </div>
+                <!-- Les images de la catégorie Action seront chargées par JavaScript -->
             </div>
             <h2>Adventure</h2>
-
             <div class="carousel" id="adventureCarousel">
-               
-                <div class="carousel-item">
-                    <img src="images/Adventure/aff_1498020191118152716.jpg" alt="Category 2 Movie 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Adventure/aff_2909020181022030858.jpg" alt="Category 2 Movie 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Adventure/aff_733436720140211183416.jpg" alt="Category 2 Movie 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Adventure/aff_9179020190615130002.jpg" alt="Category 2 Movie 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Adventure/fa886b35cb5eb6c24eae1d0f76ba9ef1.jpg" alt="Category 2 Movie 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Adventure/Jungle_Cruise.jpg" alt="Category 2 Movie 6">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Adventure/qOB9Gd1OWmIcVzU4tn3GqkwvYZF.jpg" alt="Category 2 Movie 7">
-                </div>
+                <!-- Les images de la catégorie Adventure seront chargées par JavaScript -->
             </div>
             <h2>Fantasy</h2>
-
             <div class="carousel" id="fantasyCarousel">
-                
-                <div class="carousel-item">
-                    <img src="images/Fantasy/19211318.jpg" alt="Category 3 Movie 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Fantasy/20109776.jpg" alt="Category 3 Movie 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Fantasy/arton40010.jpg" alt="Category 3 Movie 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Fantasy/fantasy-island-206670l.jpg" alt="Category 3 Movie 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Fantasy/La_Petite_Sirene.jpg" alt="Category 3 Movie 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Fantasy/les-animaux-fantastiques-23345.jpg" alt="Category 3 Movie 6">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Fantasy/oblivion-affiche-film-tom-cruise-hd.jpg" alt="Category 3 Movie 7">
-                </div>
+                <!-- Les images de la catégorie Fantasy seront chargées par JavaScript -->
             </div>
-
-    
         </div>
     </section>
 

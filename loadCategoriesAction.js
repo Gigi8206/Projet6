@@ -1,29 +1,30 @@
-// URL de l'API
+// Remplacez "http://localhost:8000/api/v1/titles/" par l'URL correcte de votre API.
 const titlesUrl = "http://localhost:8000/api/v1/titles/";
 
-// Fonction pour mettre à jour le carrousel "Action"
-async function updateActionCarousel() {
-    // Supprime le contenu existant du carrousel "Action"
-    const actionCarousel = document.querySelector("#actionCarousel");
-    actionCarousel.innerHTML = "";
+async function getListBestScores(category) {
+    // Ajoutez le filtre pour la catégorie spécifiée
+    const apiUrl = `${titlesUrl}?sort_by=-imdb_score&page_size=7&genre=${category}`;
 
-    // Récupère les nouvelles images depuis l'API
-    const listByGenre = await fetch(`${titlesUrl}?genre=Action&sort_by=-imdb_score&page_size=7`)
-        .then(response => response.json());
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(listBestScores => {
+            listBestScores.results.forEach(element => {
+                const topRatedCarousel = document.querySelector("#topRatedCarousel");
 
-    // Ajoute les nouvelles images au carrousel "Action"
-    listByGenre.results.forEach(element => {
-        let div = document.createElement('div');
-        div.classList.add('carousel-item');
-        let img = document.createElement('img');
-        img.setAttribute('src', element['image_url']);
-        div.appendChild(img);
-        actionCarousel.appendChild(div);
-    });
+                let div = document.createElement('div')
+                div.classList.add('carousel-item');
+                let img = document.createElement('img');
+                img.setAttribute('src', element['image_url'])
+                div.appendChild(img);
+                topRatedCarousel.appendChild(div);
+            });
+        });
 }
 
-// Appelle la fonction pour mettre à jour le carrousel "Action"
-updateActionCarousel();
+// Appeler la fonction pour afficher les films les mieux notés de la catégorie "Action"
+getListBestScores('Action');
+
+
 
 
 
