@@ -33,3 +33,49 @@ async function getListBestScores() {
 
 // Appelle la fonction pour récupérer la liste des films les mieux notés
 getListBestScores();
+
+
+// Fonction asynchrone pour récupérer la liste des films les mieux notés par genre
+async function getListBestScoresByGenre(genreName, carouselId) {
+    // Utilise le nom du genre pour construire l'URL de l'API
+    const apiUrl = `${titlesUrl}?sort_by=-imdb_score&page_size=7&genre_contains=${genreName}`;
+
+    try {
+        const response = await fetch(apiUrl);
+
+        // Vérifie si la réponse est réussie (statut 200 OK)
+        if (!response.ok) {
+            throw new Error(`Erreur de requête: ${response.status} ${response.statusText}`);
+        }
+
+        const listBestScores = await response.json();
+
+        const genreCarousel = document.querySelector(`#${carouselId}`);
+        genreCarousel.innerHTML = '';
+
+        // Vérifie si des résultats sont retournés
+        if (listBestScores.results && listBestScores.results.length > 0) {
+            listBestScores.results.forEach(element => {
+                let div = document.createElement('div')
+                div.classList.add('carousel-item');
+                let img = document.createElement('img');
+                img.setAttribute('src', element['image_url'])
+                div.appendChild(img);
+                genreCarousel.appendChild(div);
+            });
+        } else {
+            console.warn(`Aucun résultat trouvé pour le genre ${genreName}.`);
+        }
+    } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error);
+    }
+}
+
+// Appelle la fonction pour récupérer et afficher la liste de films "Action"
+getListBestScoresByGenre('Action', 'actionCarousel');
+
+// Appelle la fonction pour récupérer et afficher la liste de films "Adventure"
+getListBestScoresByGenre('Biography', 'biographyCarousel');
+
+// Appelle la fonction pour récupérer et afficher la liste de films "Fantasy"
+getListBestScoresByGenre('Animation', 'animationCarousel');
