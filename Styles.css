@@ -126,3 +126,9 @@ footer {
     text-align: center;
     padding: 1em;
 }
+
+#fullDescription {
+    color: white;
+    padding: 1em;
+    text-align: center;
+}

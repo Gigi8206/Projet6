@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <script src="loadCategories.js"></script>
     <script src="getBestMovie.js"></script>
-
 </head>
 <body>
 
@@ -21,13 +20,16 @@
         </nav>
     </header>
 
-    <section class="main-section"  id="justreamit">
+    <section class="main-section" id="justreamit">
         <div class="best-movie">
             <img src="" alt="Meilleur film" id="bestMovieImage">
             <h2 id="bestMovieTitle"></h2>
-            <p id="bestMovieDescription">A young violinist with leukemia brings hope and life into a desolate Russian hospital for children. This film aims to raise awareness and funds to end childhood cancer, and is part of the project Let's Make a Difference.</p>
-            <button>Voir plus</button>
+            <button onclick="toggleFullDescription()">Voir plus</button>
+            <div id="fullDescription" style="display: none;">
+                A young violinist with leukemia brings hope and life into a desolate Russian hospital for children. This film aims to raise awareness and funds to end childhood cancer, and is part of the project Let's Make a Difference.
+            </div>
         </div>
+
     
         <div class="top-rated-movies" id="accueil">
             <h2>Films les mieux notés</h2>
@@ -117,10 +119,24 @@
     
         </div>
     </section>
+    
 
     <footer>
         <p>&copy; 2023 JustStreamIt</p>
     </footer>
+    <script>
+        // Fonction pour basculer la visibilité de la description complète
+        function toggleFullDescription() {
+            // Sélectionne la div pour la description complète
+            const fullDescriptionDiv = document.getElementById('fullDescription');
 
+            // Bascule la visibilité de la description complète
+            if (fullDescriptionDiv.style.display === 'none' || fullDescriptionDiv.style.display === '') {
+                fullDescriptionDiv.style.display = 'block';
+            } else {
+                fullDescriptionDiv.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
