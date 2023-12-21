@@ -4,7 +4,7 @@ async function getBestMovieDetails(movieUrl) {
     const bestMovieDetails = await response.json();
 
 
-    document.getElementsByClassName('best-movie')[0].setAttribute('id', `title-${bestMovieDetails.id}`);
+    document.getElementsByClassName('best-movie')[0].setAttribute('id', `title-${bestMovieDetails.id}-best`);
     // Met à jour l'image, le titre  du meilleur film dans le HTML
     document.getElementById('bestMovieImage').setAttribute('src', bestMovieDetails['image_url']);
     document.getElementById('bestMovieTitle').innerText = bestMovieDetails['title'];
