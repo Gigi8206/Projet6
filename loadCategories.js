@@ -1,3 +1,23 @@
+var modal = document.getElementById("myModal");
+console.log(modal)
+
+async function handleImageClick(element) {
+    try {
+        let titleId = element.parentNode.id.split('-')[1];
+        console.log(titleId);
+        // Use fetch within an async function
+        const response = await fetch(`${titlesUrl}${titleId}`);
+        const data = await response.json();
+
+        // Process the fetched data
+        console.log('Fetched data:', data);
+
+        modal.style.display = 'block';
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
 // Définition de l'URL de l'API
 const titlesUrl = "http://localhost:8000/api/v1/titles/";
 
@@ -15,6 +35,10 @@ async function getListBestScores() {
             let img = document.createElement('img');
             img.setAttribute('src', element['image_url']);
             img.addEventListener('error', (event) => handleImageError(event, undefined)); // Ajout du gestionnaire d'erreur
+            // Add a click event listener to the dynamically created img element
+            img.addEventListener('click', function() {
+                handleImageClick(img);
+            });
             div.appendChild(img);
             topRatedCarousel.appendChild(div);
         });
@@ -41,6 +65,10 @@ async function getListBestScoresByGenre(genreName, carouselId) {
                 let img = document.createElement('img');
                 img.setAttribute('src', element['image_url']);
                 img.addEventListener('error', (event) => handleImageError(event, genreName)); // Ajout du gestionnaire d'erreur
+                // Add a click event listener to the dynamically created img element
+                img.addEventListener('click', function() {
+                    handleImageClick(img);
+                });
                 div.appendChild(img);
                 genreCarousel.appendChild(div);
             });

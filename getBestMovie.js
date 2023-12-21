@@ -6,7 +6,12 @@ async function getBestMovieDetails(movieUrl) {
 
     document.getElementsByClassName('best-movie')[0].setAttribute('id', `title-${bestMovieDetails.id}-best`);
     // Met à jour l'image, le titre  du meilleur film dans le HTML
-    document.getElementById('bestMovieImage').setAttribute('src', bestMovieDetails['image_url']);
+    let bestMovieImage = document.getElementById('bestMovieImage')
+    bestMovieImage.setAttribute('src', bestMovieDetails['image_url']);
+    bestMovieImage.addEventListener('click', function() {
+        // Call the asynchronous function when the image is clicked
+        handleImageClick(bestMovieImage);
+    });
     document.getElementById('bestMovieTitle').innerText = bestMovieDetails['title'];
     document.getElementById('fullDescription').innerText = bestMovieDetails['description'];    
 }
