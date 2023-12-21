@@ -3,10 +3,10 @@ async function getBestMovieDetails(movieUrl) {
     const response = await fetch(movieUrl);
     const bestMovieDetails = await response.json();
 
-    // Met à jour l'image, le titre et la description du meilleur film dans le HTML
+    // Met à jour l'image, le titre  du meilleur film dans le HTML
     document.getElementById('bestMovieImage').setAttribute('src', bestMovieDetails['image_url']);
     document.getElementById('bestMovieTitle').innerText = bestMovieDetails['title'];
-    document.getElementById('bestMovieDescription').innerText = bestMovieDetails['description'];
+    
 }
 
 // Fonction asynchrone pour récupérer la liste des films les mieux notés
