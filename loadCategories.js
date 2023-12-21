@@ -11,7 +11,7 @@ async function getListBestScores() {
         listBestScores.results.forEach((element, index) => {
             let div = document.createElement('div');
             div.classList.add('carousel-item');
-            div.setAttribute('id', `titre-${element.id}`);
+            div.setAttribute('id', `titre-${element.id}-top`);
             let img = document.createElement('img');
             img.setAttribute('src', element['image_url']);
             img.addEventListener('error', (event) => handleImageError(event, undefined)); // Ajout du gestionnaire d'erreur
@@ -37,7 +37,7 @@ async function getListBestScoresByGenre(genreName, carouselId) {
             listBestScores.results.forEach((element, index) => {
                 let div = document.createElement('div');
                 div.classList.add('carousel-item');
-                div.setAttribute('id', `titre-${element.id}`);
+                div.setAttribute('id', `titre-${element.id}-${genreName}`);
                 let img = document.createElement('img');
                 img.setAttribute('src', element['image_url']);
                 img.addEventListener('error', (event) => handleImageError(event, genreName)); // Ajout du gestionnaire d'erreur
