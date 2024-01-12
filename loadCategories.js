@@ -1,25 +1,61 @@
 var modal = document.getElementById("myModal");
-console.log(modal)
 
 async function handleImageClick(element) {
     try {
         let titleId = element.parentNode.id.split('-')[1];
-        console.log(titleId);
-        // Use fetch within an async function
+        // Utiliser fetch dans une fonction asynchrone
         const response = await fetch(`${titlesUrl}${titleId}`);
         const data = await response.json();
 
-        // Process the fetched data
-        console.log('Fetched data:', data);
+        // Traitement des données récupérées
+        console.log('Données récupérées :', data);
 
-        modal.style.display = 'block';
+        // Mise à jour des détails dans la fenêtre modale
+        updateModalDetails(data);
+
+        // Affichage de la fenêtre modale
+        openModal();
     } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Erreur lors de la récupération des données :', error);
     }
 }
 
 // Définition de l'URL de l'API
 const titlesUrl = "http://localhost:8000/api/v1/titles/";
+
+// Fonction pour mettre à jour les détails dans la fenêtre modale
+function updateModalDetails(movieData) {
+    // Sélection de la modal et des éléments à mettre à jour
+    const modalTitle = document.getElementById('modalTitle');
+    const modalGenre = document.getElementById('modalGenre');
+    const modalReleaseDate = document.getElementById('modalReleaseDate');
+    const modalRated = document.getElementById('modalRated');
+    const modalImdbScore = document.getElementById('modalImdbScore');
+    const modalDirector = document.getElementById('modalDirector');
+    const modalActors = document.getElementById('modalActors');
+    const modalDuration = document.getElementById('modalDuration');
+    const modalCountry = document.getElementById('modalCountry');
+    const modalBoxOffice = document.getElementById('modalBoxOffice');
+    const modalSummary = document.getElementById('modalSummary');
+
+    // Mise à jour des éléments avec les données du film
+    modalTitle.textContent = movieData.title;
+    modalGenre.textContent = movieData.genres.join(', ');
+    modalReleaseDate.textContent = movieData.date_published;
+    modalRated.textContent = movieData.rated;
+    modalImdbScore.textContent = movieData.imdb_score;
+    modalDirector.textContent = movieData.directors.join(', ');
+    modalActors.textContent = movieData.actors.join(', ');
+    modalDuration.textContent = movieData.duration + ' minutes';
+    modalCountry.textContent = movieData.countries.join(', ');
+    modalBoxOffice.textContent = movieData.worldwide_gross_income + ' ' + movieData.budget_currency;
+    modalSummary.textContent = movieData.description;
+}
+
+// Fonction pour ouvrir la fenêtre modale
+function openModal() {
+    modal.style.display = 'block';
+}
 
 // Fonction asynchrone pour récupérer la liste des films bien notés
 async function getListBestScores() {
@@ -35,7 +71,7 @@ async function getListBestScores() {
             let img = document.createElement('img');
             img.setAttribute('src', element['image_url']);
             img.addEventListener('error', (event) => handleImageError(event, undefined)); // Ajout du gestionnaire d'erreur
-            // Add a click event listener to the dynamically created img element
+            // Ajouter un gestionnaire d'événement de clic à l'élément img créé dynamiquement
             img.addEventListener('click', function() {
                 handleImageClick(img);
             });
@@ -43,10 +79,9 @@ async function getListBestScores() {
             topRatedCarousel.appendChild(div);
         });
     } catch (error) {
-        console.error('Erreur lors du chargement des films les mieux notés:', error);
+        console.error('Erreur lors du chargement des films les mieux notés :', error);
     }
 }
-
 
 // Fonction asynchrone pour récupérer la liste des films bien notés par genre
 async function getListBestScoresByGenre(genreName, carouselId) {
@@ -65,7 +100,7 @@ async function getListBestScoresByGenre(genreName, carouselId) {
                 let img = document.createElement('img');
                 img.setAttribute('src', element['image_url']);
                 img.addEventListener('error', (event) => handleImageError(event, genreName)); // Ajout du gestionnaire d'erreur
-                // Add a click event listener to the dynamically created img element
+                // Ajouter un gestionnaire d'événement de clic à l'élément img créé dynamiquement
                 img.addEventListener('click', function() {
                     handleImageClick(img);
                 });
@@ -74,7 +109,7 @@ async function getListBestScoresByGenre(genreName, carouselId) {
             });
         }
     } catch (error) {
-        console.error(`Erreur lors du chargement des films ${genreName}:`, error);
+        console.error(`Erreur lors du chargement des films ${genreName} :`, error);
     }
 }
 
@@ -88,17 +123,10 @@ function handleImageError(event, genreName) {
     }
 }
 
-
-
-
-
 getListBestScores();
-
 
 getListBestScoresByGenre('Action', 'actionCarousel');
 
-
 getListBestScoresByGenre('Biography', 'biographyCarousel');
-
 
 getListBestScoresByGenre('Animation', 'animationCarousel');

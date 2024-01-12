@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,96 +25,25 @@
             <img src="" alt="Meilleur film" id="bestMovieImage">
             <h2 id="bestMovieTitle"></h2>
             <button onclick="toggleFullDescription()">Voir plus</button>
-            <div id="fullDescription" style="display: none;">
-            </div>
+            <div id="fullDescription" style="display: none;"></div>
         </div>
 
     
         <div class="top-rated-movies" id="accueil">
             <h2>Films les mieux notés</h2>
-            <div class="carousel" id="topRatedCarousel">
-            </div>
+            <div class="carousel" id="topRatedCarousel"></div>
         </div>
         <div class="category" id="categories">
             <h2>Action</h2>
 
-            <div class="carousel" id="actionCarousel">
-                
-                <div class="carousel-item">
-                    <img src="" alt="Category 1 Mo  vie 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 1 Movie 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 1 Movie 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 1 Movie 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 1 Movie 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 1 Movie 6">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 1 Movie 7">
-                </div>
-            </div>
+            <div class="carousel" id="actionCarousel"></div>
+            
+            <!-- Autres catégories -->
             <h2>Biography</h2>
+            <div class="carousel" id="biographyCarousel"></div>
 
-            <div class="carousel" id="biographyCarousel">
-               
-                <div class="carousel-item">
-                    <img src="" alt="Category 2 Movie 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 2 Movie 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 2 Movie 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 2 Movie 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 2 Movie 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 2 Movie 6">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 2 Movie 7">
-                </div>
-            </div>
             <h2>Animation</h2>
-
-            <div class="carousel" id="animationCarousel">
-                
-                <div class="carousel-item">
-                    <img src="" alt="Category 3 Movie 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 3 Movie 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 3 Movie 3">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 3 Movie 4">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 3 Movie 5">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 3 Movie 6">
-                </div>
-                <div class="carousel-item">
-                    <img src="" alt="Category 3 Movie 7">
-                </div>
-            </div>
-
+            <div class="carousel" id="animationCarousel"></div>
     
         </div>
     </section>
@@ -124,25 +53,41 @@
         <p>&copy; 2023 JustStreamIt</p>
     </footer>
 
-    <!-- The Modal -->
+    <!-- La fenêtre modale -->
     <div id="myModal" class="modal">
-        <!-- Modal content -->
+        <!-- Contenu de la fenêtre modale -->
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p><strong>Genre :</strong> <span id="modalGenre"></span></p>
+            <p><strong>Date de sortie :</strong> <span id="modalReleaseDate"></span></p>
+            <p><strong>Rated :</strong> <span id="modalRated"></span></p>
+            <p><strong>Score IMDb :</strong> <span id="modalImdbScore"></span></p>
+            <p><strong>Réalisateur :</strong> <span id="modalDirector"></span></p>
+            <p><strong>Acteurs :</strong> <span id="modalActors"></span></p>
+            <p><strong>Durée :</strong> <span id="modalDuration"></span></p>
+            <p><strong>Pays d'origine :</strong> <span id="modalCountry"></span></p>
+            <p><strong>Résultat au Box Office :</strong> <span id="modalBoxOffice"></span></p>
+            <p><strong>Résumé :</strong></p>
+            <p id="modalSummary"></p>
         </div>
     </div>
 
     <script>
         var span = document.getElementsByClassName("close")[0];
         
-        // When the user clicks on the button, open the modal
-        span.onclick = function() {
+        // Fonction pour fermer la fenêtre modale
+        function closeModal() {
+            var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
+        // Quand l'utilisateur clique sur le bouton, ouvre la fenêtre modale
+        span.onclick = closeModal;
+
+        // Quand l'utilisateur clique n'importe où en dehors de la fenêtre modale, la ferme
         window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
             if (event.target == modal) {
                 modal.style.display = "none";
             }
